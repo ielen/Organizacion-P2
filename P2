@@ -107,37 +107,37 @@
 	<PunctChar char=";" use="comment" />
 
 	<!--......... machine instruction fields ............-->
-	<Field name="VALOR" type="required" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field4408808f">
+	<Field name="VALOR" type="required" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field69fdd2c6">
 	</Field>
-	<Field name="NOUSADO8" type="ignored" numBits="8" relativity="absolute" signed="false" defaultValue="0" id="model.Field3da4d9db">
+	<Field name="NOUSADO8" type="ignored" numBits="8" relativity="absolute" signed="false" defaultValue="0" id="model.Field21abc8f5">
 	</Field>
-	<Field name="REGI2" type="required" numBits="2" relativity="absolute" signed="false" defaultValue="0" id="model.Field1be56381">
+	<Field name="REGI2" type="required" numBits="2" relativity="absolute" signed="false" defaultValue="0" id="model.Field33dee268">
 		<FieldValue name="SP" value="3" />
 		<FieldValue name="BP" value="2" />
 		<FieldValue name="B" value="1" />
 		<FieldValue name="A" value="0" />
 	</Field>
-	<Field name="TIPO" type="required" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Field1fd24dad">
+	<Field name="TIPO" type="required" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Fieldd283c77">
 		<FieldValue name="I" value="1" />
 		<FieldValue name="D" value="0" />
 	</Field>
-	<Field name="NOUSADO1" type="ignored" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Field1f5eaa20">
+	<Field name="NOUSADO1" type="ignored" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Fieldac4b4f6">
 	</Field>
-	<Field name="NOUSADO11" type="ignored" numBits="11" relativity="absolute" signed="false" defaultValue="0" id="model.Field42fc211">
+	<Field name="NOUSADO11" type="ignored" numBits="11" relativity="absolute" signed="false" defaultValue="0" id="model.Field7557293b">
 	</Field>
-	<Field name="NOUSADO10" type="ignored" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field3466507e">
+	<Field name="NOUSADO10" type="ignored" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field315e585b">
 	</Field>
-	<Field name="REG" type="required" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Field39d4dc7a">
+	<Field name="REG" type="required" numBits="1" relativity="absolute" signed="false" defaultValue="0" id="model.Field7dd91183">
 		<FieldValue name="B" value="1" />
 		<FieldValue name="A" value="0" />
 	</Field>
-	<Field name="NOUSADO2" type="ignored" numBits="2" relativity="absolute" signed="false" defaultValue="0" id="model.Field53316eca">
+	<Field name="NOUSADO2" type="ignored" numBits="2" relativity="absolute" signed="false" defaultValue="0" id="model.Field521579ca">
 	</Field>
-	<Field name="DIRECCION" type="required" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field297411f7">
+	<Field name="DIRECCION" type="required" numBits="10" relativity="absolute" signed="false" defaultValue="0" id="model.Field1e478c42">
 	</Field>
-	<Field name="NOUSADO12" type="ignored" numBits="12" relativity="absolute" signed="false" defaultValue="0" id="model.Field2f175107">
+	<Field name="NOUSADO12" type="ignored" numBits="12" relativity="absolute" signed="false" defaultValue="0" id="model.Field5d188351">
 	</Field>
-	<Field name="OPCODE" type="required" numBits="4" relativity="absolute" signed="false" defaultValue="0" id="model.Field303f7f93">
+	<Field name="OPCODE" type="required" numBits="4" relativity="absolute" signed="false" defaultValue="0" id="model.Field68f8d478">
 	</Field>
 
 	<!--............. FileChannels .................-->
@@ -173,6 +173,7 @@
 	<!--............. test ..........................-->
 	<Test name="&lt;!A=0&gt;(1)" register="model.module.Register3b323a6f" start="0" numBits="16" comparison="NE" value="0" omission="1" id="model.microinstruction.Test8eb9039" />
 	<Test name="&lt;IR[15]==0&gt;(1)" register="model.module.Register25072d4d" start="15" numBits="1" comparison="EQ" value="0" omission="1" id="model.microinstruction.Test6c45b42c" />
+	<Test name="&lt;IR[15]==0&gt;(2)" register="model.module.Register25072d4d" start="15" numBits="1" comparison="EQ" value="0" omission="2" id="model.microinstruction.Test2258b79" />
 	<Test name="&lt;IR[15]==1&gt;(1)" register="model.module.Register25072d4d" start="15" numBits="1" comparison="EQ" value="1" omission="1" id="model.microinstruction.Test6846c2a5" />
 	<Test name="&lt;IR[15]==1&gt;(7)" register="model.module.Register25072d4d" start="15" numBits="1" comparison="EQ" value="1" omission="7" id="model.microinstruction.Test6b049b74" />
 	<Test name="&lt;IR[4..5]!=BP&gt;(2)" register="model.module.Register25072d4d" start="4" numBits="2" comparison="NE" value="2" omission="2" id="model.microinstruction.Test3fbab475" />
@@ -397,10 +398,10 @@
 		<Microinstruction microRef="model.microinstruction.End7157b2f0" />
 	</MachineInstruction>
 
-	<MachineInstruction name="Sub" opcode="6" instructionFormat="OPCODE REG DIRECCION NOUSADO1" assemblyFormat="OPCODE REG DIRECCION" instructionColors="#b2d1d7 #bee6fc #85a3ae #89c2d5" assemblyColors="#b2d1d7 #bee6fc #85a3ae" >
-		<Microinstruction microRef="model.microinstruction.TransferRtoR2e82ba6f" />
-		<Microinstruction microRef="model.microinstruction.MemoryAccess4cf28b91" />
-		<Microinstruction microRef="model.microinstruction.Test339ed62e" />
+	<MachineInstruction name="Sub" opcode="6" instructionFormat="OPCODE REG DIRECCION NOUSADO1" assemblyFormat="OPCODE REG DIRECCION" instructionColors="#b2d1d7 #bee6fc #85a3ae #9e98c6" assemblyColors="#b2d1d7 #bee6fc #85a3ae" >
+		<Microinstruction microRef="model.microinstruction.CpusimSet20a4947d" />
+		<Microinstruction microRef="model.microinstruction.TransferRtoR70c7218b" />
+		<Microinstruction microRef="model.microinstruction.Test4030057d" />
 		<Microinstruction microRef="model.microinstruction.Arithmetic4e7058a2" />
 		<Microinstruction microRef="model.microinstruction.End7157b2f0" />
 		<Microinstruction microRef="model.microinstruction.Arithmetic772f88f6" />
