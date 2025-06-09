@@ -1,0 +1,41 @@
+;Programa con una subrutina de 3 niveles que suma tres numeros 
+In A 
+In B
+Push A ; entro el primer parametro
+Push B ; segundo parametro
+In A
+Push A ; tercer parametro
+Call Sumo3Num ; primer nivel de la subrutina
+Add SP 6
+Stop
+
+Sumo3Num:
+Push BP
+Move BP SP
+Add SP -2
+
+LoadStack A 8 ; pongo en A el primer parametro
+Call SumarRegistros ; B tiene la primera suma y la muestra. Es  el segundo nivel de la subrutuna
+LoadStack A 4 ; pongo en A el tercer parametro
+Call SumarRegistros ; Ultima suma con el segundo y tercer parametro
+SaveStack B -2 ; dejo en una variable local el resultado
+
+Add SP 2
+Pop BP
+Ret
+
+Salida:
+Out B
+Ret
+
+SumarRegistros:
+    JumpZ FinSuma    ; si A  es 0
+
+    Add B 1    ;suma y deja el resultado en B     
+    Sub A 1           
+
+    Jump SumarRegistros
+
+FinSuma:
+    Call Salida ; el tercer nivel de la subrutina 
+    Ret

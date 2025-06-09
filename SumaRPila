@@ -1,0 +1,43 @@
+;Programa que suma dos numeros y utiliza una subrutina recursiva
+;Valor maximo de entrada 19.
+;NO suma negativos pero funciona con un B negativo A >= 0
+In A
+In B
+Push A ;primer parametro 
+Push B ; segundo parametro
+Call SUMA 
+Add SP 4        ; saco los parametros
+Out B           ; resultado de la suma
+Stop
+
+SUMA:
+    Push BP
+    Move BP SP
+    Add SP -2           ; reservar espacio local
+
+    JumpZ CasoBase     ; si A es 0, salta al caso base
+
+    ; caso recursivo: A = A - 1, B = B + 1
+    Sub A 1
+    Add B 1
+
+    Push A              ; pasar parametros a nueva llamada
+    Push B
+    Call SUMA           ; llamada recursiva
+    Add SP 4            ; limpiar pila de la llamada
+
+    Add SP 2            ; liberar variables locales
+    Pop BP
+    Ret
+
+CasoBase:
+    SaveStack B -2      ; guardar resultado en espacio local
+    Jump Fin
+
+Fin:
+    LoadStack B -2      ; cargar resultado en B es inecesario pero para ver como se usa
+    Add SP 2           
+    Pop BP
+    Ret
+
+
