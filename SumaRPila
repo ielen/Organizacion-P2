@@ -13,7 +13,7 @@ Stop
 SUMA:
     Push BP
     Move BP SP
-    Add SP -2           ; reservar espacio local
+    Add SP -2           ; reservo espacio para variable local
 
     JumpZ CasoBase     ; si A es 0, salta al caso base
 
@@ -21,21 +21,21 @@ SUMA:
     Sub A 1
     Add B 1
 
-    Push A              ; pasar parametros a nueva llamada
+    Push A              ; parametros de la nueva call
     Push B
     Call SUMA           ; llamada recursiva
-    Add SP 4            ; limpiar pila de la llamada
+    Add SP 4            ; limpio la pila
 
-    Add SP 2            ; liberar variables locales
+    Add SP 2            ; libero variables locales
     Pop BP
     Ret
 
 CasoBase:
-    SaveStack B -2      ; guardar resultado en espacio local
+    SaveStack B -2      ; guardo en una una variable local el resultado
     Jump Fin
 
 Fin:
-    LoadStack B -2      ; cargar resultado en B es inecesario pero para ver como se usa
+    LoadStack B -2      ; cargar resultado en B es inecesario porque B ya lo tiene pero para ver como se usa
     Add SP 2           
     Pop BP
     Ret
