@@ -1,0 +1,32 @@
+;Programa que muestra el contador de un num hasta 0.
+; Precondicion: A debe ser > = 0
+;la memoria me permite un maximo de 28
+In A
+Push A        ; primer parametro
+Call Contador
+Add SP 2      ; restauro la pila 2 por 1 parametro
+Stop
+
+Contador:
+    Push BP
+    Move BP SP
+    Add SP -2
+
+    LoadStack A 4       ; cargo el parametro
+
+    Out A               ; imprimo cada num
+
+    JumpZ CasoBase      ; si A == 0 termine de ciclar 
+
+    Sub A 1             ; A = A - 1
+    Push A              ; pusheo el nuevo A
+    Call Contador ; llamada recursiva
+
+    Add SP 2           
+
+CasoBase:
+    Add SP 2
+    Pop BP
+    Ret
+
+
