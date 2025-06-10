@@ -1,0 +1,34 @@
+; Programa que intercambia valores
+Call Entrada      ; Primer nivel de la subrutina
+Stop
+
+Entrada:
+    In A 
+    In B
+    Push A         ; Primer parametro
+    Push B         ; Segundo parametro
+    Call Swap      ; Segundo nivel de la subrutina
+    Add SP 4
+    Ret
+
+Swap:
+    Push BP
+    Move BP SP
+    Add SP -4      ; variables locales 2
+
+    SaveStack A -2 ; Guardo A en variable local
+    SaveStack B -4 ; Guardo B en variable local
+
+    LoadStack A -4 ; Cargo en A el segundo parametro
+    LoadStack B -2 ; Cargo en B el primer parametro
+
+    Add SP 4
+    Pop BP
+    Call Salida    ; Tercer nivel de la subrutina
+    Ret
+
+Salida:
+    Out A
+    Out B
+    Ret
+
